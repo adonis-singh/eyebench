@@ -56,10 +56,6 @@ const boardRows = dsSeries.map((s) => {
   document.getElementById("sota-model").textContent = `${name} at ${best.effort} reasoning`;
 }
 
-/* methodology: scoring sentence comes from the export */
-document.getElementById("scoring-note").textContent =
-  `Scoring is ${FRONTIER.scoring}. Whiskers are \u00b11 binomial standard error on n\u00a0=\u00a0${FRONTIER.items_per_task * 5}.`;
-
 const state = { key: "acc", dir: -1 };
 
 function renderBoard() {
