@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EyeBench v3 — a vision exam for frontier models</title>
+<meta name="description" content="EyeBench v3: 100 synthetic visual-reasoning questions, exact-match scoring. Leaderboard and cost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=467075e2dda5">
+<script>
+document.documentElement.dataset.theme =
+  localStorage.getItem("theme") ||
+  (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+</script>
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme"></button>
+
+<main>
+  <section class="hero" aria-label="EyeBench v3">
+    <div class="snellen" role="img" aria-label="EyeBench v3 title set as a Snellen eye chart">
+      <div class="srow s1"><span class="letters">E</span><span class="acuity">20/200</span></div>
+      <div class="srow s2"><span class="letters">Y&thinsp;E</span><span class="acuity">20/70</span></div>
+      <div class="srow s3"><span class="letters">B&thinsp;E&thinsp;N</span><span class="acuity">20/40</span></div>
+      <div class="srow s4"><span class="letters">C&thinsp;H&thinsp;&middot;&thinsp;V&thinsp;3</span><span class="acuity">20/20</span></div>
+    </div>
+    <p class="lede">
+      A visual reasoning benchmark that tests LLMs on their capability to spot fine
+      details, trace paths, and more. The current SOTA score is <strong class="ok" id="sota-score"></strong>,
+      set by <span id="sota-model"></span>.
+    </p>
+  </section>
+
+  <section class="board" aria-labelledby="board-h">
+    <div class="section-head">
+      <h2 id="board-h">Leaderboard</h2>
+    </div>
+    <div class="table-wrap">
+      <table id="lb">
+        <thead>
+          <tr>
+            <th class="num">#</th>
+            <th>Model</th>
+            <th>Visual acuity</th>
+            <th class="num sortable" data-key="acc">Score</th>
+            <th class="num sortable" data-key="cost">Est. cost</th>
+            <th class="num sortable" data-key="costPerCorrect">Est. $ / correct</th>
+            <th class="num sortable" data-key="outTok">Output tok</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">Methodology</h2>
+    <ol>
+      <li id="scoring-note"></li>
+      <li>The leaderboard shows each model only at its highest measured reasoning effort.</li>
+      <li>Costs are API-equivalent estimates from observed tokens and per-model API prices, not subscription charges. Cache discounts are not included.</li>
+      <li>Reasoning-effort labels are provider-relative and not comparable across vendors.</li>
+      <li>Questions without a parsed answer count as incorrect, including invalid outputs and exhausted request retries.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <a href="https://x.com/adonis_singh">Twitter</a>
+  <span class="sep">&middot;</span>
+  <a href="https://github.com/adonis-singh">GitHub</a>
+</footer>
+
+<script src="data-frontier.js?v=467075e2dda5"></script>
+<script src="app.js?v=467075e2dda5"></script>
+</body>
+</html>
