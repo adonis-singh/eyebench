@@ -119,8 +119,6 @@ th.sortable[aria-sort="ascending"]::after { content: "↑"; opacity: 1; }
   padding: 1px 7px; color: var(--muted); background: var(--pill-bg);
 }
 
-.pill-new { color: #b45309; border-color: #f59e0b; background: transparent; }
-:root[data-theme="dark"] .pill-new { color: #fbbf24; }
 
 .barwrap { min-width: 220px; }
 .bar { position: relative; height: 10px; background: var(--track); border-radius: 2px; }
@@ -191,15 +189,19 @@ footer .sep { opacity: .5; }
 .ds-chip.off i { background: var(--ds-ax); }
 .ds-empty { font-family: var(--mono); font-size: 12px; color: var(--ds-ax); padding: 32px 8px; margin: 0; }
 
-#dschart svg { width: 100%; height: auto; display: block; }
-#dschart .dgrid { stroke: var(--ds-grid); stroke-width: 1; }
-#dschart .dax { font: 11px "JetBrains Mono", monospace; fill: var(--ds-ax); }
-#dschart .dtitle { font: 600 13.5px "Archivo", sans-serif; fill: var(--ds-title); }
-#dschart .deff { font: italic 11px "Archivo", sans-serif; fill: var(--ds-ax); }
-#dschart .dlab { font: 600 11.5px "Archivo", sans-serif; }
-#dschart .dsub { font: 8.5px "JetBrains Mono", monospace; letter-spacing: .08em; opacity: .75; }
-#dschart .cline, #dschart .clab { transition: opacity .15s ease; cursor: pointer; }
-@media (prefers-reduced-motion: reduce) { #dschart .cline, #dschart .clab { transition: none; } }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .dgrid { stroke: var(--ds-grid); stroke-width: 1; }
+.chart .dax { font: 11px "JetBrains Mono", monospace; fill: var(--ds-ax); }
+.chart .dtitle { font: 600 13.5px "Archivo", sans-serif; fill: var(--ds-title); }
+.chart .deff { font: italic 11px "Archivo", sans-serif; fill: var(--ds-ax); }
+.chart .dlab { font: 600 11.5px "Archivo", sans-serif; }
+.chart .dsub { font: 8.5px "JetBrains Mono", monospace; letter-spacing: .08em; opacity: .75; }
+.chart .tline { fill: none; stroke: var(--vc); stroke-width: 1.8; stroke-linejoin: round; }
+.chart .tdot { fill: var(--vc); stroke: var(--vc); stroke-width: 1.5; cursor: default; }
+.chart .tdot.hollow { fill: var(--ds-bg); }
+.chart .tname { fill: var(--vc); }
+.chart .cline, .chart .clab { transition: opacity .15s ease; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .chart .cline, .chart .clab { transition: none; } }
 
 /* vendor colors for chart lines and leaderboard bars — light palette */
 .v-openai { --vc: #2b6d3f; }

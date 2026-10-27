@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34f4d224a314">
+<link rel="stylesheet" href="styles.css?v=463aab0a4a61">
 <script>
 document.documentElement.dataset.theme =
   localStorage.getItem("theme") ||
@@ -56,9 +56,19 @@ document.documentElement.dataset.theme =
     </div>
   </section>
 
+  <section class="timeline" aria-labelledby="tl-h">
+    <div class="section-head">
+      <h2 id="tl-h">Score by release date</h2>
+    </div>
+    <div class="ds-card">
+      <div class="ds-legend" id="tl-legend" role="group" aria-label="Filter by lab"></div>
+      <div id="tlchart" class="chart"></div>
+    </div>
+  </section>
+
   <section class="notes" aria-labelledby="notes-h">
     <h2 id="notes-h">Methodology</h2>
-    <p>Every question has a single number as its answer and is marked right or wrong. A question with no parsed answer, including an invalid output or a failed request, counts as wrong. Each model is listed at its highest measured reasoning effort. Effort names are set by each provider and don't compare across vendors. The whiskers show &plusmn;1 standard error. Costs are the tokens each run used at the model's API prices. Caching never comes into play, since each question is a single request.</p>
+    <p>Every question has a single number as its answer and is marked right or wrong. A question with no parsed answer, including an invalid output or a failed request, counts as wrong. Each model is listed at its highest measured reasoning effort. Effort names are set by each provider and don't compare across vendors. The whiskers show &plusmn;1 standard error. Release dates are the day each model was listed on OpenRouter. Costs are the tokens each run used at the model's API prices. Caching never comes into play, since each question is a single request.</p>
   </section>
 </main>
 
@@ -68,7 +78,9 @@ document.documentElement.dataset.theme =
   <a href="https://github.com/adonis-singh">GitHub</a>
 </footer>
 
-<script src="data-frontier.js?v=34f4d224a314"></script>
-<script src="app.js?v=34f4d224a314"></script>
+<div id="tip" class="tip" hidden></div>
+<script src="data-frontier.js?v=463aab0a4a61"></script>
+<script src="app.js?v=463aab0a4a61"></script>
+<script src="timeline.js?v=463aab0a4a61"></script>
 </body>
 </html>

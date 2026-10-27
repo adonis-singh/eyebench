@@ -16,6 +16,13 @@ paintThemeBtn();
 const fmtTok = (t) => (t >= 1e6 ? (t / 1e6).toFixed(2) + "M" : Math.round(t / 1e3) + "k");
 const fmtUsd = (v) => "$" + (v >= 100 ? v.toFixed(0) : v.toFixed(2));
 
+const VENDOR_LABELS = {
+  openai: "OpenAI", anthropic: "Anthropic", google: "Google", xai: "xAI",
+  moonshot: "Moonshot", qwen: "Qwen", meta: "Meta",
+  "thinking-machines": "Thinking Machines", "z-ai": "Z.ai", deepseek: "DeepSeek",
+  mistral: "Mistral",
+};
+
 /* export-frontier.py sorts runs by (vendor, model, effort), so each model's
    points arrive in ascending effort order */
 const dsSeries = (() => {
@@ -44,7 +51,6 @@ const boardRows = dsSeries.map((s) => {
     cost: r.cost_usd,
     costPerCorrect: r.correct ? r.cost_usd / r.correct : null,
     outTok: r.output_tokens,
-    isNew: r.new,
   };
 });
 
@@ -74,7 +80,7 @@ function renderBoard() {
         <td class="num">${i + 1}</td>
         <td><span class="model-cell">
           <img class="picon" src="icons/${r.vendor}.svg" alt="" loading="lazy">
-          <span class="mname">${r.model}</span><span class="pill">${r.effort}</span>${r.isNew ? '<span class="pill pill-new">new</span>' : ""}
+          <span class="mname">${r.model}</span><span class="pill">${r.effort}</span>
         </span></td>
         <td class="barwrap"><div class="bar">
           <div class="fill v-${r.vendor}" style="width:${w}%"></div>
